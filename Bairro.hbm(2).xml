@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 31/05/2015 13:50:26 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.bean.Bairro" table="bairro" catalog="projeto" optimistic-lock="version">
+        <id name="baicod" type="java.lang.Integer">
+            <column name="baicod" />
+            <generator class="identity" />
+        </id>
+        <property name="bainome" type="string">
+            <column name="bainome" length="50" not-null="true" />
+        </property>
+        <set name="enderecos" table="endereco" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="endbaicod" not-null="true" />
+            </key>
+            <one-to-many class="model.bean.Endereco" />
+        </set>
+    </class>
+</hibernate-mapping>

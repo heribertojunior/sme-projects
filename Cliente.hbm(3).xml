@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 31/05/2015 13:50:26 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.bean.Cliente" table="cliente" catalog="projeto" optimistic-lock="version">
+        <id name="clicod" type="java.lang.Integer">
+            <column name="clicod" />
+            <generator class="identity" />
+        </id>
+        <property name="clinome" type="string">
+            <column name="clinome" length="50" not-null="true" />
+        </property>
+        <property name="clicpf" type="long">
+            <column name="clicpf" not-null="true" />
+        </property>
+        <property name="clilogin" type="string">
+            <column name="clilogin" length="40" not-null="true" unique="true" />
+        </property>
+        <property name="clisenha" type="string">
+            <column name="clisenha" length="40" not-null="true" />
+        </property>
+        <property name="clifone1" type="string">
+            <column name="clifone1" length="10" />
+        </property>
+        <property name="clifone2" type="string">
+            <column name="clifone2" length="10" />
+        </property>
+        <property name="clifone3" type="string">
+            <column name="clifone3" length="10" />
+        </property>
+        <set name="enderecos" table="endereco" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="endclicod" not-null="true" />
+            </key>
+            <one-to-many class="model.bean.Endereco" />
+        </set>
+        <set name="vendas" table="venda" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="venclicod" not-null="true" />
+            </key>
+            <one-to-many class="model.bean.Venda" />
+        </set>
+    </class>
+</hibernate-mapping>

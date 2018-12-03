@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 31/05/2015 13:50:26 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.bean.Endereco" table="endereco" catalog="projeto" optimistic-lock="version">
+        <id name="endcod" type="java.lang.Integer">
+            <column name="endcod" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="bairro" class="model.bean.Bairro" fetch="select">
+            <column name="endbaicod" not-null="true" />
+        </many-to-one>
+        <many-to-one name="cliente" class="model.bean.Cliente" fetch="select">
+            <column name="endclicod" not-null="true" />
+        </many-to-one>
+        <property name="endrua" type="string">
+            <column name="endrua" length="40" not-null="true" />
+        </property>
+        <property name="endnumero" type="int">
+            <column name="endnumero" not-null="true" />
+        </property>
+        <property name="endcep" type="int">
+            <column name="endcep" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
